@@ -6,7 +6,7 @@ public interface UserAccessService {
 
 	ResponseVo getSession(String sessID) throws Exception;
 	
-	ResponseVo checkUserAuth(String userCode, String pwdhash) throws Exception;
+	ResponseVo checkUserAuth(String userCode, String pwdhash, String sessID) throws Exception;
 	
-	ResponseVo invalidateSession(String userCode) throws Exception;
+	ResponseVo invalidateSession(String sessID) throws Exception;
 }
