@@ -4,9 +4,9 @@ import com.yan.access.vo.ResponseVo;
 
 public interface UserAccessService {
 
-	ResponseVo getSession(String sessID) throws Exception;
+	ResponseVo getSession(String ticket) throws Exception;
 	
-	ResponseVo checkUserAuth(String userCode, String pwdhash, String sessID) throws Exception;
+	ResponseVo checkUserAuth(String userCode, String pwdhash, String ticket) throws Exception;
 	
-	ResponseVo invalidateSession(String sessID) throws Exception;
+	ResponseVo invalidateSession(String ticket) throws Exception;
 }

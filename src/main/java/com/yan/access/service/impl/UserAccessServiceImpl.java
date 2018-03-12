@@ -11,21 +11,21 @@ import com.yan.access.vo.ResponseVo;
 public class UserAccessServiceImpl implements UserAccessService{
 
 	@Override
-	public ResponseVo getSession(String sessID) throws Exception{
+	public ResponseVo getSession(String ticket) throws Exception{
 		URI uri = new URIBuilder()
                 .setScheme("http")
                 .setHost("localhost")
                 .setPort(8080)
                 .setPath("/ssoweb/UserAccessIntfServlet")
                 .setParameter("intfCode", "getSession")
-                .setParameter("sessID", sessID)
+                .setParameter("ticket", ticket)
                 .build();
 		ResponseVo responseVo = HttpJsonUtil.sendGetRequest(uri);
 		return responseVo;
 	}
 
 	@Override
-	public ResponseVo checkUserAuth(String userCode, String pwdhash, String sessID) throws Exception {
+	public ResponseVo checkUserAuth(String userCode, String pwdhash, String ticket) throws Exception {
 		URI uri = new URIBuilder()
                 .setScheme("http")
                 .setHost("localhost")
@@ -34,14 +34,14 @@ public class UserAccessServiceImpl implements UserAccessService{
                 .setParameter("intfCode", "checkUserAuth")
                 .setParameter("userCode", userCode)
                 .setParameter("pwdhash", pwdhash)
-                .setParameter("sessID", sessID)
+                .setParameter("ticket", ticket)
                 .build();
 		ResponseVo responseVo = HttpJsonUtil.sendGetRequest(uri);
 		return responseVo;
 	}
 
 	@Override
-	public ResponseVo invalidateSession(String sessID) throws Exception{
+	public ResponseVo invalidateSession(String ticket) throws Exception{
 		URI uri = new URIBuilder()
                 .setScheme("http")
                 .setHost("localhost")
@@ -49,7 +49,7 @@ public class UserAccessServiceImpl implements UserAccessService{
                 .setPath("/ssoweb/UserAccessIntfServlet")
                 .setParameter("intfCode", "invalidateSession")
                 .setParameter("userCode", "")
-                .setParameter("sessID", sessID)
+                .setParameter("ticket", ticket)
                 .build();
 		ResponseVo responseVo = HttpJsonUtil.sendGetRequest(uri);
 		return responseVo;
